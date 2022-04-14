@@ -28,3 +28,15 @@ class Game(models.Model):
     system_won = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.player} {self.hand} ({'Player LOST' if self.system_won else 'Player WIN'})"
+
+    def does_system_hand_win(self):
+        if self.hand == self.ROCK and self.system_hand == self.PAPER:
+            return True
+        elif self.hand == self.PAPER and self.system_hand == self.SCISSORS:
+            return True
+        elif self.hand == self.SCISSORS and self.system_hand == self.ROCK:
+            return True
+        return False
