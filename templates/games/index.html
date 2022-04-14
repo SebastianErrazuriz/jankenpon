@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if latest_game_list %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Jugador</th>
+                <th scope="col">Mano Jugador</th>
+                <th scope="col">Mano Sistema</th>
+                <th scope="col">Sistema Ganó?</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for game in latest_game_list %}
+                <tr>
+                    <th scope="row"><a href="{% url 'games:detail' game.id %}">{{ game.pk }}</a></th>
+                    <td>{{ game.player }}</td>
+                    <td>{{ game.hand }}</td>
+                    <td>{{ game.system_hand }}</td>
+                    <td>{{ game.does_system_hand_win }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Games are available.</p>
+    {% endif %}
+
+
+
+{% endblock %}
