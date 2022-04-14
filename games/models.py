@@ -20,4 +20,11 @@ class Game(models.Model):
         max_length=8,
         choices=HAND_CHOICES,
     )
+    system_hand = models.CharField(
+        max_length=8,
+        choices=HAND_CHOICES,
+        default=PAPER
+    )
+    system_won = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
