@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>
+        {{ game.player }}
+        <b>
+            {% if game.does_system_hand_win %}
+                Perdió 😓
+            {% else %}
+                Ganó 🥳
+            {% endif %}
+        </b>
+    </h1>
+    <ul>
+        <li>Jugador: <b>{{ game.player }}</b></li>
+        <li>Mano Jugador: <b>{{ game.hand }}</b></li>
+        <li>Mano Sistema: <b>{{ game.system_hand }}</b></li>
+        <li>Ganó el Sistema en BD?: <b>{{ game.system_won }}</b></li>
+        <li>Regla Sistema: <b>{{ game.does_system_hand_win }}</b></li>
+        <li>Fecha: <b>{{ game.created_at }}</b></li>
+    </ul>
+{% endblock %}
